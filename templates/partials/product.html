@@ -1,0 +1,14 @@
+<div class="product">
+  <h3>{{ product.name }}</h3>
+  <img src="{{ product.image|imageSize(200, 200) }}" />
+  <p>{{ product.description }}</p>
+  <button
+     class="snipcart-add-item waves-effect waves-light btn"
+     data-item-id="{{ product.product_id }}"
+     data-item-name="{{ product.name }}"
+     data-item-price="{{ product.price }}"
+     data-item-url= "{{ // + getSetting('site_url') }}"
+     data-item-description="{{ product.description }}">
+  Buy now!
+  </button>
+</div>

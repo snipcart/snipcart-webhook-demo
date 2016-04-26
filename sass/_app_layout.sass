@@ -1,0 +1,700 @@
+body
+  padding: $base-line-height * 3 0 150px 0
+  min-height: 100%
+  position: relative
+
+
+// Hamburger animation
+.ham
+  width: 30px
+  height: 30px
+  position: relative
+  +transform(rotate(0deg))
+  +transition(all .5s ease-in-out)
+  cursor: pointer
+  margin-top: 10px
+  margin-right: 10px
+  float: right
+  display: none
+
+.ham span
+  display: block
+  position: absolute
+  height: 3px
+  width: 100%
+  background: $gray
+  opacity: 1
+  left: 0
+  +transform(rotate(0deg))
+  +transition(all .25s ease-in-out)
+
+.ham span:nth-child(1)
+  top: 0px
+
+.ham span:nth-child(2),.ham span:nth-child(3)
+  top: 9px
+
+.ham span:nth-child(4)
+  top: 18px
+
+.ham.open span:nth-child(1)
+  top: 9px
+  width: 0%
+  left: 50%
+
+.ham.open span:nth-child(2)
+  +transform(rotate(45deg))
+
+.ham.open span:nth-child(3)
+  +transform(rotate(-45deg))
+
+.ham.open span:nth-child(4)
+  top: 9px
+  width: 0%
+  left: 50%
+
+header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  z-index: 1
+  opacity: 1
+  +transition(all .2s ease-in)
+header.hide
+  opacity: 0
+  top: -45px
+
+header nav
+  border-bottom: solid 1px $black
+  background: $gray-darker
+  margin-bottom: $base-line-height
+  z-index: $z-index-tray
+  +clearfix
+  +animation(bounce-in .5s ease-in-out)
+  +animation-fill-mode(forwards)
+header nav ul
+  &.name
+    float: left
+    li
+      padding: $base-line-height / 2 $base-line-height / 4
+    li:nth-child(2) a
+      font-weight: bold
+    li:nth-child(3) a
+      text-transform: initial
+      color: $gray-light
+  &.menu
+    float: right
+    padding-right: $base-line-height / 4
+    display: inline-block
+  li
+    display: inline-block
+    padding: $base-line-height / 2
+  li.search-icon
+    padding-right: 0
+  li.search-form
+    padding: 0
+    display: none
+  li.search-form.active
+    display: inline-block
+  a
+    display: inline-block
+    color: $gray-lighter
+    text-transform: uppercase
+    font-size: 12px
+    font-family: $custom-font-family
+    &:visited
+      color: $gray-lighter
+  a.fa-search
+    color: $red
+  li.circle
+    padding: 0 0 0 $base-line-height / 2
+    a
+      background: $red
+      border-radius: 50px
+      height: 30px
+      width: 30px
+      line-height: 30px
+      text-align: center
+      color: $gray-darker
+header input[type=text]
+  background: $gray
+  border-radius: 50px
+  padding-left: $base-line-height / 2
+  border: none
+  box-shadow: 0 0 0 transparent
+  color: $gray-lighter
+  font-family: $custom-font-family
+article, .container
+  max-width: 700px
+  margin: auto
+
+h1
+  text-align: center
+  font-size: 250%
+  opacity: 0
+  margin-bottom: $base-line-height / 2
+  +animation(title-in .5s ease-in-out)
+  +animation-fill-mode(forwards)
+  +animation-delay(.25s)
+.deck p
+  font-size: 150%
+  font-family: $custom-font-family
+  line-height: 1.3
+  font-weight: 300
+  opacity: 0
+  +animation(deck-in .5s ease-in-out)
+  +animation-fill-mode(forwards)
+  +animation-delay(.5s)
+.deck.deck-smaller p
+  font-size: 110%
+
+article
+  .caption
+    text-align: center
+    padding: $base-line-height / 2
+    color: $gray-light
+    border-bottom: solid 1px $table-border-color
+    font-size: 14px
+    position: relative
+    top: -$base-line-height * 2
+  .video
+    @extend .wy-video
+    margin-bottom: $base-line-height
+  > blockquote
+    font-family: $custom-font-family
+    margin-bottom: $base-line-height
+    margin-left: $base-line-height
+    font-style: italic
+    position: relative
+    border-left: solid 5px $text-color
+    padding-left: $base-line-height
+  .date
+    margin-bottom: $base-line-height / 4
+    text-align: center
+    color: $gray-light
+  h2,h3,h4,h5,h6
+    margin-bottom: $base-line-height / 2
+  ul, ol
+    margin-left: $base-line-height / 2
+  img[alt="center"]
+    max-width: 150%
+    margin: $base-line-height -25%
+  img[alt="full"]
+    width: 100vw
+    max-width: 100vw
+    position: relative
+    left: -50vw
+    margin: $base-line-height * 2 0 $base-line-height * 2 350px
+    border-radius: 0
+  img[alt="right"]
+    width: 60%
+    max-width: 60%
+    margin: 0 -15% $base-line-height $base-line-height
+    float: right
+  img[alt="left"]
+    width: 60%
+    max-width: 60%
+    margin: 0 $base-line-height $base-line-height -15%
+    float: left
+  img
+    border-radius: 5px
+  pre
+    max-width: 120%
+    margin: $base-line-height * 2 -10%
+
+.next-item, .prev-item
+  position: fixed
+  top: 50%
+  background: $gray-darker
+  color: $white
+  height: 60px
+  width: 20px
+  margin-top: -30px
+  overflow: hidden
+  z-index: $z-index-tooltip
+  +transition(width, ease-in, .2s)
+  span
+    font-size: 30px
+    line-height: 60px
+    width: 20px
+    text-align: center
+    color: $white
+  div
+    color: $white
+    display: block
+    display: none
+    font-size: 12px
+    line-height: 20px
+    +truncate(200px)
+  .item-head
+    font-family: $custom-font-family
+    text-transform: uppercase
+    color: $gray-light
+    font-size: 10px
+    margin-top: 10px
+.next-item:hover, .prev-item:hover
+  width: 240px
+  div
+    display: inline-block
+.next-item:hover
+  padding-left: $base-line-height / 2
+.prev-item:hover
+  padding-right: $base-line-height / 2
+  div
+    float: right
+
+.next-item
+  right: 0
+  +border-left-radius(2px)
+  span
+    float: right
+  div
+    float: left
+.prev-item
+  left: 0
+  +border-right-radius(2px)
+  span
+    float: left
+  div
+    float: right
+
+.home-me
+  border-radius: 150px
+  display: block
+  width: 100px
+  height: 100px
+  text-align: center
+  line-height: 100px
+  opacity: 0
+  border: solid 0px $red
+  +animation(avatar-in .5s ease-in-out)
+  +animation-fill-mode(forwards)
+  +animation-delay(2s)
+
+.home-me-wrap
+  width: 100px
+  height: 100px
+  margin: $base-line-height auto
+  position: relative
+
+.home-h1
+  text-align: center
+  font-size: 250%
+  margin-bottom: $base-line-height / 2
+
+.home-hello p
+  font-size: 110%
+  font-family: $custom-font-family
+  line-height: 1.5
+  font-weight: 300
+  margin: 0 10%
+  text-align: center
+
+.home-feed
+  li > a
+    color: $text-color
+    margin-bottom: $base-line-height
+    display: block
+    width: 100%
+  li a h2
+    margin-bottom: $base-line-height / 2
+    color: $text-color
+    +transition(color .2s ease-in)
+  li a:hover h2
+    color: $red
+  li a p
+    color: $gray
+  .type
+    font-family: $custom-font-family
+    font-size: 80%
+    color: $gray-lighter
+
+// This bit is for the embedded version of tweets
+.home-feed .twitter.twitter-iframe
+  padding: $base-line-height / 2 $base-line-height !important
+  min-height: 122px
+  iframe
+    width: 100% !important
+
+// This is for the native one.
+.home-feed .twitter
+  background: $white
+  padding: $base-line-height
+  border: solid 1px $table-border-color
+  margin-bottom: $base-line-height
+  border-radius: 4px
+  position: relative
+  +clearfix
+  .twitter-avatar
+    width: 50px
+    float: left
+  .twitter-avatar img
+    border-radius: 4px
+  .twitter-message
+    margin-left: 74px
+  .twitter-date
+    text-align: right
+    font-size: 80%
+    font-family: $custom-font-family
+    color: $gray-light
+    a
+      color: $blue
+  .twitter-name
+    margin-bottom: $base-line-height / 2
+    font-family: $custom-font-family
+    display: block
+    a
+      font-weight: bold
+      color: $blue
+      display: inline-block
+    .fa
+      float: right
+      color: $gray-lighter
+  p
+    margin-bottom: $base-line-height / 4
+  p:last-child
+    margin-bottom: 0
+  .twitter-follow-button
+    position: absolute
+    top: $base-line-height
+    right: $base-line-height
+
+.home-feed .home-link
+  a > h2
+    font-size: 100%
+    .fa
+      font-size: 14px
+      color: $gray-lighter
+  p
+    border-left: solid 3px $gray-lighter
+    color: $gray-light
+    padding-left: $base-line-height / 2
+    margin-left: $base-line-height
+
+.home-feed .home-video
+  a
+    +outer-container
+  .image
+    padding-bottom: 56.25%
+    width: 100%
+    background-size: 100%
+    background-position: center
+    border-radius: 4px
+    +filter(grayscale(100%))
+    +transition(background-position, .5s ease-in)
+  a:hover .image
+    +filter(grayscale(0%))
+  .video-thumb
+    +span-columns(4)
+  .video-text
+    +span-columns(8)
+    +omega
+    h2
+      font-size: 100%
+  p:last-child
+    margin-bottom: 0
+
+.home-feed .home-gallery
+  .image
+    max-width: 150%
+    width: 150%
+    margin: $base-line-height -25%
+    height: 300px
+    background-size: cover
+    background-position: center center
+    position: relative
+    overflow: hidden
+    border-radius: 4px
+    +filter(grayscale(100%))
+    +transition(all .5s ease-in)
+    &:hover
+      +filter(grayscale(0%))
+      .mask
+        opacity: 1
+        right: 0
+      .text
+        opacity: 1
+        right: 0
+    .mask
+      right: -30%
+      top: 0
+      bottom: 0
+      position: absolute
+      width: 30%
+      background: rgba(255,255,255,1)
+      z-index: $z-index-tooltip
+      opacity: 0
+      +transition(all .2s ease-in)
+    .text
+      padding: $base-line-height
+      position: absolute
+      right: -30%
+      width: 30%
+      bottom: 0
+      opacity: 0
+      z-index: $z-index-tooltip + 1
+      +transition(all .2s ease-in)
+      .title
+        font-family: $custom-font-family
+        font-size: 125%
+        font-weight: bold
+        display: block
+        margin-bottom: $base-line-height / 2
+        color: $link-color
+      .num
+        display: block
+        font-family: $custom-font-family
+        font-size: 80%
+      .description
+        color: $gray
+        line-height: 1.5
+        display: block
+        margin-bottom: $base-line-height / 2
+hr
+  margin-right: 25%
+  margin-left: 25%
+
+.gallery
+  +display(flex)
+  +flex-flow(row wrap)
+  max-width: 1200px
+  margin: auto
+  width: 90%
+  li
+    width: 25%
+    padding: $base-line-height / 4
+  .image-wrap
+    padding: $base-line-height / 4
+    background: $white
+    border: solid 1px $table-border-color
+  img
+    width: 100%
+footer
+  background: $white
+  padding: $base-line-height
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+.video-individual
+  +outer-container
+  .video-main
+    +span-columns(8)
+  .video-list
+    +span-columns(4)
+    +omega
+
+
+.wh-search-results
+  dt
+    font-size: 125%
+    font-weight: bold
+    padding: 10px 0px
+    font-family: $custom-font-family
+    &:after
+      content: ""
+      width: 50%
+      margin: $base-line-height auto
+      height: 1px
+      background: $table-border-color
+      display: block
+  dd
+    margin-left: 0
+  h2
+    margin-bottom: $base-line-height / 4
+    +transition(all .5s ease-in)
+  a
+    text-decoration: none
+    color: #000
+    display: block
+  a:hover
+    h2
+      color: $red
+  p
+    color: $gray-light
+    font-size: 90%
+  .wh-search-term
+    background: #ddd
+    display: inline-block
+    font-weight: bold
+  .wh-search-url
+    font-size: 80%
+    color: #666
+    font-family: $custom-font-family
+    margin-bottom: $base-line-height / 2
+  .wh-search-term-in-page
+    font-weight: bold
+.wh-search-paginate
+  @extend .wy-paginate
+
+.built-with-webhook
+  text-align: center
+  display: block
+  color: $text-color !important
+  font-family: $custom-font-family
+  +clearfix
+  .wh-logo
+    +wh-logo(20px, $gray-dark)
+    display: inline-block
+  span
+    vertical-align: middle
+    font-size: 90%
+
+.work
+  list-style: none
+  margin: 0
+.work li
+  list-style: none
+  margin: 0
+  margin-bottom: $base-line-height * 2
+  .time-period
+    float: right
+    font-size: 14px
+  .role
+    font-weight: bold
+    font-size: 90%
+    font-family: $custom-font-family
+    margin-bottom: $base-line-height / 2
+
+.social
+  list-style: none
+  margin: 0
+  margin-top: $base-line-height
+  text-align: center
+.social li
+  list-style: none
+  margin: 0
+  display: inline-block
+  padding-right: $base-line-height / 2
+  a
+    display: block
+    font-size: 28px
+    color: $gray-lighter
+    +transition(color .2s ease-in-out)
+  a:hover
+    color: $text-color
+
+.wy-spinner
+  border-color: $gray-lighter
+  border-top-color: $gray-light
+
+.big-hero
+  margin-top: -$base-line-height * 3
+  padding-top: $base-line-height * 5
+  background-size: cover
+  padding-bottom: $base-line-height * 2
+  margin-bottom: $base-line-height * 2
+  .date
+    margin-bottom: $base-line-height / 4
+    text-align: center
+    color: $gray-light
+  &.background--dark
+    .date
+      color: rgba(255,255,255,.8)
+      text-shadow: 0px 1px 5px rgba(0,0,0,.8)
+    h1
+      color: $white
+      text-shadow: 0px 1px 10px rgba(0,0,0,.8)
+    .deck
+      color: $white
+      text-shadow: 0px 1px 5px rgba(0,0,0,.8)
++media($tablet)
+  .container, article
+    padding: 0 $gutter
+  .home-feed .home-gallery
+    .image
+      width: 100%
+      margin: $base-line-height 0
+    .image .mask, .image .text
+      right: -50%
+      width: 50%
+  .gallery li
+    width: 50%
+  article
+    img[alt="center"]
+      max-width: 100%
+      margin: 0
+    img[alt="full"]
+      width: 100%
+      max-width: 100%
+      position: static
+      left: auto
+      margin: 0
+      border-radius: 0
+    img[alt="right"]
+      width: 33%
+      max-width: 33%
+      margin: 0 0 $base-line-height $base-line-height
+      float: right
+    img[alt="left"]
+      width: 33%
+      max-width: 33%
+      margin: 0 $base-line-height $base-line-height 0
+      float: left
+    pre
+      max-width: 100%
+      margin: $base-line-height * 2 0
+
++media($mobile)
+  .home-feed .home-gallery
+    .image .mask, .image .text
+      right: -100%
+      width: 100%
+  .home-feed .home-video
+    .video-thumb
+      float: right
+      margin: 0
+    .video-text
+      margin: 0
+      p
+        display: none
+  header nav
+    z-index: 5
+    .name li:last-child
+      display: none
+    ul.menu
+      z-index: 2
+      position: fixed
+      top: 45px
+      left: 0
+      bottom: 0
+      right: 0
+      width: 100vw
+      background: $gray-dark
+      float: none
+      height: 0
+      overflow: hidden
+      +transition(height .5s ease-in-out)
+    ul.menu.active
+      display: block
+      height: 100vh
+    .menu li
+      display: block
+      width: 100%
+      border-bottom: solid 1px $gray-darker
+      border-top: solid 1px lighten($gray-dark, 5%)
+      padding: 0
+      a
+        display: block
+        padding: $base-line-height / 2
+    .menu li.search-icon
+      display: none
+    .menu li.search-form
+      display: block
+      border-bottom: none
+      text-align: center
+      padding-top: $base-line-height
+      input[type=text]
+        width: 90%
+        margin: auto
+  header .ham
+    display: block
+  .gallery li
+    width: 100%
+  article
+    img[alt="right"], img[alt="left"]
+      width: 100%
+      max-width: 100%
+      margin: 0 0 $base-line-height 0

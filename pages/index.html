@@ -1,0 +1,25 @@
+{% extends "templates/partials/base.html" %}
+
+{% block head_extra %}
+  <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+{% endblock %}
+
+{% block content %}
+
+    <h1>Welcome to the Focused Geeks!</h1>
+    <div class="deck deck-smaller wy-text-center">
+      <h4>A live demo with a Snipcart store integrated into Webhook CMS</h4>
+    </div>
+    <hr>
+
+    {% for product in cms.product %}
+      {% include "templates/partials/product.html" %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block scripts_extra %}
+  <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key={{ cms.snipcart.api_key }}></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+{% endblock %}
