@@ -1,7 +1,5 @@
 # Integrating Snipcart with Webhook CMS
 
-Snipcart's full shopping cart platform integration within Webhook CM + demo code and website for the integration.
+Snipcart's full shopping cart platform integration within Webhook CM + demo code.
 
-Clone the repo and enjoy/test our online demo at:
-
-Read our blog post about it at:
+> [Read the tutorial][here](https://snipcart.com/blog/webhook-cms-ecommerce-snipcart).
